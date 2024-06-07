@@ -1,0 +1,301 @@
+@font-face {
+    font-family: 'Original Surfer';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/originalsurfer/v22/RWmQoKGZ9vIirYntXJ3_MbekzNMSC0Fu.woff2) format('woff2');
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+  }
+
+:root {
+    --mainColor: #48d8d1;
+    --secondaryColor: #f95487;
+    --white: #ffff;
+    --black: #000000;
+    --mainFont: 'Original Surfer';
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    background: rgb(72,216,209);
+    background: linear-gradient(0deg, rgba(72,216,209,1) 20%, rgba(249,84,135,1) 80%);
+    background-size: 50% 150%;
+    box-sizing: border-box;
+    margin: 0px;
+    animation: tideAnimation 10s ease-in-out 0s infinite;
+}
+
+@keyframes tideAnimation {
+    0% {background-position: 0% 0%;}
+    50% {background-position: 150% 50%;}
+    100% {background-position: 0% 0%;}
+}
+
+h2, h3, h4, h5, h6, p, li {
+    color: var(--textColor);
+    font-family: var(--mainFont);
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5%;
+}
+
+h1 {
+    color: var(--mainColor);
+    text-shadow: 3px 3px 0px var(--black);
+    text-align: center;
+    font-family: var(--mainFont);
+    font-size: clamp(2rem, 6vw, 10rem);
+    letter-spacing: 3px;
+}
+
+#introCon {
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+    text-align: center;
+}
+
+
+
+#introCon p, #introConDisappear p {
+    color: var(--white);
+    text-shadow: 3px 2px var(--black);
+    font-size: clamp(1rem, 3vw, 3rem);
+    margin: 0px 1rem;
+    padding: 1rem;
+}
+
+#introButton {
+    background-color: rgba(0, 0, 0, 0.795);
+    color: var(--mainColor);
+    text-shadow: 1.5px 1.5px 0px #000000;
+    padding: 1rem;
+    border-radius: 3rem;
+    border-color: rgba(0, 0, 0, 0.795);
+    border-style: solid;
+    cursor: pointer;
+    transition: 0.25s ease-in-out;
+}
+
+#introButton:hover {
+    color: var(--secondaryColor);
+}
+
+#introConDisappear {
+    display: flex;
+    align-items: center;
+    flex-direction: column-reverse;
+    text-align: center;
+    opacity: 0;
+    animation: disappear 1s cubic-bezier(0.1, 0.7, 1.0, 1.0) 0s 1;
+}
+
+@keyframes disappear {
+    0% {opacity: 1; transform: translateY(0%);}
+    100% {opacity: 0; transform: translateY(50%);}
+}
+
+#beachesCon {
+    display: none;
+    flex-direction: column;
+}
+
+#beachesConVisible {
+    display: flex;
+    flex-direction: column;
+    animation: beachAppear 2s cubic-bezier(0.1, 0.7, 1.0, 1.0) 0s 1;
+}
+
+@keyframes beachAppear {
+    0% {opacity: 0; 
+        transform: translateY(50%);
+    }
+    100% {opacity: 1; 
+        transform: translateY(0%);
+    }
+}
+
+#beachesConVisible ul {
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+    grid-template-rows: repeat(4, 25%);
+    background-image: url("./world2.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-position: center;
+    height: 100vh;
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+
+#beachesConVisible h2 {
+    color: var(--white);
+    font-size: clamp(1.75rem, 3vw, 4rem);
+    text-shadow: 3px 3px 0px var(--black);
+    text-align: center;
+    margin: 3rem 1rem;
+}
+
+.beachListItemInvisible {
+	background: transparent;
+	width: 100%;
+	height: auto;
+	animation: none;
+}
+
+.beachListItemVisible {
+	background: red;
+    border-style: solid;
+	width: clamp(0.5rem, 1vw, 1rem);
+	height: clamp(0.5rem, 1vw, 1rem);
+	animation: rotateSquare 2s linear 0s infinite;
+}
+
+@keyframes rotateSquare {
+    0% {transform: rotate(0deg);}
+    100% {transform: rotate(360deg);}
+}
+
+#beachesConVisible ul li:hover h3 {
+    position: relative;
+    visibility: visible;
+    background-color: var(--white);
+    color: var(--black);
+    font-size: 1rem;
+    border-style: solid;
+    padding: 0.5rem;
+    z-index: 2;
+}
+
+#beachesConVisible ul li:hover {
+    background: transparent;
+    border-style: none;
+    height: auto;
+    width: 100%;
+    animation: none;
+    cursor: pointer;
+}
+
+#beachInvisible {
+    visibility: hidden;
+}
+
+#beachVisible {
+    position: relative;
+    visibility: visible;
+    background-color: var(--white);
+    color: var(--black);
+    font-size: 1rem;
+    border-style: solid;
+    padding: 0.5rem;
+    z-index: 2;
+}
+
+#beachInfoVisible {
+    display: block;
+    position: relative;
+    background-color: var(--white);
+    color: var(--black);
+    font-size: clamp(1rem, 2vw, 1.5rem);
+    width: fit-content;
+    border-style: solid;
+    padding: 0.5rem;
+    z-index: 2;
+}
+
+#beachInfoInvisible {
+    display: none;
+}
+
+#Whitehaven {
+    grid-column-start: 4;
+    grid-row-start: 3;
+    align-self: end;
+    justify-self: center;
+}
+
+#Grace {
+    grid-column-start: 2;
+    grid-row-start: 2;
+    align-self: center;
+    justify-self: center;
+    margin-right: 55%;
+}
+
+#Baia {
+    grid-column-start: 2;
+    grid-row-start: 3;
+    align-self: center;
+    justify-self: center;
+}
+
+#Navagio {
+    grid-column-start: 3;
+    grid-row-start: 2;
+    margin-left: 15%;
+}
+
+#Playa {
+    grid-column-start: 1;
+    grid-row-start: 2;
+    align-self: end;
+    justify-self: end;
+}
+
+#Anse {
+    grid-column-start: 3;
+    grid-row-start: 3;
+    align-self: center;
+    justify-self: center;
+}
+
+#Seven {
+    grid-column-start: 2;
+    grid-row-start: 2;
+    align-self: end;
+    margin: 1rem;
+}
+
+#Bora {
+    grid-column-start: 1;
+    grid-row-start: 3;
+    align-self: center;
+}
+
+#Lanikai {
+    grid-column-start: 1;
+    grid-row-start: 2;
+    align-self: end;
+    justify-self: center;
+}
+
+#Pink {
+    grid-column-start: 2;
+    grid-row-start: 2;
+    align-self: center;
+    margin: 1rem;
+}
+
+@media screen and (max-width: 800px) {
+    h1 {
+        text-shadow: 2px 2px var(--black);
+    }
+    #beachesConVisible ul {
+        grid-template-rows: repeat(4, 10%);
+        background-size: 95% 40%;
+        background-position: top;
+    }
+    #beachInfoVisible {
+        position: absolute;
+    }
+    #Pink {
+        margin: 0rem;
+    }
+}
