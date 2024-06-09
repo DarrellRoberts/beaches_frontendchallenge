@@ -1,4 +1,4 @@
-##Glam Up My Markup: Beaches
+## Glam Up My Markup: Beaches
 
 This was an entry to Dev's Frontend Challenge v24.05.29.
 
